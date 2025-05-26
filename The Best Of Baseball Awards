@@ -9,5 +9,51 @@ JOIN people ON batting.playerid = people.playerid
 GROUP BY teams.name, batting.yearid
 ORDER BY 3 DESC
 
+
+
 -- Shortest Sluggers --
 
+SELECT teams.name, batting.yearid AS "Year", ROUND(AVG(people.height), 2) AS "Avg Height"
+FROM batting
+JOIN teams ON batting.team_id = teams.id
+JOIN people ON batting.playerid = people.playerid
+GROUP BY teams.name, batting.yearid
+ORDER BY 2, 3 ASC
+
+
+
+-- Biggest Spenders --
+
+SELECT teams.name, salaries.yearid, SUM(salaries.salary)
+FROM salaries
+JOIN people ON people.playerid = salaries.playerid
+JOIN teams ON teams.teamid = salaries.teamid
+		   AND teams.yearid = salaries.yearid
+GROUP BY teams.name, salaries.yearid
+ORDER BY 3 DESC
+
+
+
+-- Most Bang For Their Buck In 2010 --
+
+SELECT teams.name, salaries.yearid, teams.w, ROUND(SUM(salaries.salary)/teams.w) AS "CpW"
+FROM salaries
+JOIN teams ON teams.teamid = salaries.teamid
+			AND teams.yearid = salaries.yearid
+WHERE teams.yearid = 2010
+GROUP BY teams.name, salaries.yearid, teams.w
+ORDER BY 4 ASC
+
+
+
+-- Priciest Starter --
+
+SELECT people.namegiven, pitching.yearid, teams.name, pitching.gs, salaries.salary
+FROM pitching
+JOIN people ON pitching.playerid = people.playerid
+JOIN salaries ON pitching.playerid = salaries.playerid
+				AND pitching.yearid = salaries.yearid
+				AND pitching.teamid = salaries.teamid
+JOIN teams ON pitching.teamid = teams.teamid
+WHERE gs >= 10
+ORDER BY salaries.salary/pitching.gs DESC

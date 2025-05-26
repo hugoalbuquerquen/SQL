@@ -1,0 +1,13 @@
+Query solutions for the current CC project.
+
+-- Heaviest Hitters --
+
+SELECT teams.name AS "Name", batting.yearid AS "Year", ROUND(AVG(people.weight), 2) AS "Avg weight"
+FROM batting
+JOIN teams ON batting.team_id = teams.id
+JOIN people ON batting.playerid = people.playerid
+GROUP BY teams.name, batting.yearid
+ORDER BY 3 DESC
+
+-- Shortest Sluggers --
+

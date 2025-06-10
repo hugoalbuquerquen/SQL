@@ -1,0 +1,67 @@
+/*
+
+--------- Books with 2+ authors --------------
+
+SELECT authors_books.book_isbn, book.title
+FROM authors_books
+JOIN book ON authors_books.book_isbn = book.isbn
+GROUP BY book_isbn, book.title
+HAVING COUNT(book_isbn) > 1
+
+
+
+------ With authors names -------
+
+SELECT book.title, author.name
+FROM authors_books a 
+JOIN (SELECT book_isbn
+	FROM authors_books
+	GROUP BY book_isbn
+	HAVING COUNT(book_isbn) > 1) b
+ON	a.book_isbn = b.book_isbn
+JOIN book ON a.book_isbn = book.isbn
+JOIN author ON a.author_email = author.email
+
+
+
+----------------- Books based on price --------------
+
+SELECT title, price
+FROM book
+WHERE price > CAST(10.00 AS MONEY)
+ORDER BY price DESC
+
+
+
+---------------- Books from authors w/ 2+ ---------------
+
+SELECT author.name, COUNT(*)
+FROM authors_books
+JOIN author ON author.email = authors_books.author_email
+GROUP BY author.name
+HAVING COUNT(author_email) > 1
+
+
+
+------------ With book's titles ----------------
+
+SELECT author.name, book.title
+FROM authors_books a 
+JOIN (SELECT author_email
+	FROM authors_books
+	GROUP BY author_email
+	HAVING COUNT(author_email) > 1) b
+ON	a.author_email = b.author_email
+JOIN book ON a.book_isbn = book.isbn
+JOIN author ON a.author_email = author.email
+
+
+------------------ Books by the publisher's country ---------------
+
+SELECT book.title, publisher.name, publisher.country
+FROM book
+JOIN publisher ON publisher.name = book.publisher_name
+WHERE publisher.country LIKE 'USA'
+
+
+*/

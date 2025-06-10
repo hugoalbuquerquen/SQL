@@ -1,0 +1,14 @@
+/* Example of INSERT query */
+
+
+INSERT INTO publisher
+VALUES ('Le Livre de Poche', 'France');
+
+INSERT INTO book
+VALUES ('9782253159711', 'Apocalypse Bebe (French Edition)', 'Le Livre de Poche', 18.70)
+
+INSERT INTO author
+VALUES ('Virginie Despentes', 'virginie@xixi.com', 'French writer, novelist, and filmmaker. She is known for her work exploring gender,[1] sexuality,[1] and people who live in poverty or other marginalised conditions.')
+
+INSERT INTO authors_books
+VALUES ('virginie@xixi.com', '9782253159711')

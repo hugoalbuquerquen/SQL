@@ -1,5 +1,90 @@
-/* Example of INSERT query */
+/* 
 
+------------- INSERT AND UPDATE ------------------
+
+INSERT INTO author
+VALUES ('Ignacio Dean', 'ignacio@coco.com', 'Espanish traveler');
+
+INSERT INTO publisher
+VALUES ('Zenith','Spain');
+
+INSERT INTO book
+VALUES ('9788408170129', 'Libre y Selvaje', 'Zenith', 17.00)
+
+INSERT INTO authors_books
+VALUES ('ignacio@coco.com', '9788408170129')
+
+INSERT INTO author
+VALUES ('Topher Donahue', 'topher@coco.com', 'Writer-Climber');
+
+INSERT INTO author
+VALUES ('Craig Luebben', 'craig@coco.com', 'Writer-Climber');
+
+INSERT INTO publisher
+VALUES ('Mountaineers Books','USA');
+
+INSERT INTO book
+VALUES ('9781594858628', 'Rock Climbing - Mastering Basic Skills', 'Mountaineers Books', 22.00);
+
+INSERT INTO authors_books
+VALUES ('topher@coco.com', '9781594858628'), ('craig@coco.com', '9781594858628');
+
+INSERT INTO book
+VALUES ('9781680510126', 'Advanced Rock Climbing', 'Mountaineers Books', 30.00);
+
+INSERT INTO authors_books
+VALUES ('topher@coco.com', '9781680510126');
+
+INSERT INTO publisher
+VALUES ('Bloomsbury Publishing', 'USA');
+
+INSERT INTO book
+VALUES ('9781635575583', 'A Court of Mist and Fury', 'Bloomsbury Publishing', 20.00);
+
+UPDATE book
+SET price = 9.80
+WHERE ISBN = '9781635575583';
+
+INSERT INTO book
+VALUES ('9781639730957', 'Throne of Glass', 'Bloomsbury Publishing', 12.00);
+
+INSERT INTO publisher
+VALUES ('Tor Books', 'USA');
+
+INSERT INTO book
+VALUES ('9781250868282', 'Mistborn: The Final Empire ', 'Tor Books', 16.80);
+
+INSERT INTO publisher
+VALUES ('Greenwillow Books', 'USA');
+
+INSERT INTO book
+VALUES ('9780061477973', 'House of Many Ways', 'Greenwillow Books', 7.99);
+
+INSERT INTO publisher
+VALUES ('Balzer + Bray', 'United Kingdom');
+
+INSERT INTO book
+VALUES ('9780062224743', 'Cruel Beauty', 'Balzer + Bray', 8.79);
+
+INSERT INTO author
+VALUES ('Sarah J. Maas', 'sarah@coco.com', 'Sarah Janet Maas ( born March 5 , 1986 in New York City ) is an American fantasy writer .');
+
+INSERT INTO author
+VALUES ('Brandon Sanderson', 'brandon@coco.com', 'Brandon Winn Sanderson (born December 19, 1975) is an American author of high fantasy, science fiction, and young adult books')
+
+INSERT INTO author
+VALUES ('Diana Wynne Jones', 'diana@coco.com', 'Diana Wynne Jones was a British novelist, poet, academic, literary critic, and short story writer. She principally wrote fantasy and speculative fiction novels for children and young adults.');
+
+INSERT INTO author
+VALUES ('Rosamund Hodge', 'rosamund@coco.com', 'Rosamund Hodge grew up in Los Angeles, where she spent her time reading everything she could get her hands on but especially fantasy and mythology.')
+
+
+INSERT INTO authors_books
+VALUES ('sarah@coco.com', '9781635575583'),
+('sarah@coco.com', '9781639730957'),
+('brandon@coco.com', '9781250868282'),
+('diana@coco.com', '9780061477973'),
+('rosamund@coco.com', '9780062224743');
 
 INSERT INTO publisher
 VALUES ('Le Livre de Poche', 'France');

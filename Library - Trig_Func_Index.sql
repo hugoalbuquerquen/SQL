@@ -1,6 +1,4 @@
-SELECT * FROM books LIMIT 5
-
-
+-- Function to handle the insert on the table book_rentals (and update books' table quantity)
 CREATE OR REPLACE FUNCTION update_book_quantity_func()
     RETURNS TRIGGER
 	AS 
@@ -36,7 +34,21 @@ $BODY$
 $BODY$
 LANGUAGE PLPGSQL;
 
+
+-- Trigger
 CREATE TRIGGER update_book_quantity_trig
 AFTER INSERT ON books_rentals
 FOR EACH ROW
 EXECUTE FUNCTION update_book_quantity_func();
+
+
+-- Indexes
+CREATE INDEX books_genres ON books(genre);
+
+CREATE INDEX customers_rentals ON books_rentals (id_customer, isbn_book);
+
+CREATE INDEX not_returned_books
+ON books_rentals (is_rented)
+WHERE is_rented = TRUE;
+
+CREATE INDEX authors_full_name ON authors(first_name, last_name);

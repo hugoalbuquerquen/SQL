@@ -28,7 +28,7 @@ CREATE TABLE books_authors(
 CREATE TABLE customers(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(200) NOT NULL,
-	email VARCHAR(200) NOT NULL
+	email VARCHAR(200) UNIQUE NOT NULL
 );
 
 CREATE TABLE books_rentals(

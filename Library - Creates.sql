@@ -14,8 +14,8 @@ CREATE TABLE books(
 
 CREATE TABLE authors(
 	id SERIAL PRIMARY KEY,
-	first_name VARCHAR(100),
-	last_name VARCHAR(100),
+	first_name VARCHAR(200),
+	last_name VARCHAR(200),
 	UNIQUE (first_name, last_name)
 );
 

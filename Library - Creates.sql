@@ -15,13 +15,14 @@ CREATE TABLE books(
 CREATE TABLE authors(
 	id SERIAL PRIMARY KEY,
 	first_name VARCHAR(100),
-	last_name VARCHAR(100)
+	last_name VARCHAR(100),
 	UNIQUE (first_name, last_name)
 );
 
 CREATE TABLE books_authors(
 	isbn_book VARCHAR(20) REFERENCES books(isbn),
-	id_author INT REFERENCES authors(id)
+	id_author INT REFERENCES authors(id),
+	UNIQUE (isbn_book, id_author)
 );
 
 CREATE TABLE customers(
